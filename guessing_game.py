@@ -5,6 +5,9 @@
 # --------------------------------
 import random
 
+##################
+# Global Variables
+##################
 player_name = None
 game_number = None
 high_scores = []
@@ -13,7 +16,9 @@ guesses = 0
 player_guess = None
 difficulty = 1
 
-
+##################
+# Functions
+##################
 def play_again():
     play_again = input("\nWould you like to play again? (Y/N) ")
     if play_again.upper() != "Y":
@@ -26,6 +31,7 @@ def record_highscore(guesses, player, difficulty):
     high_scores.append([guesses, player, difficulty])
     high_scores.sort()
 
+# appends high scores for the current difficulty level to the difficulty_scores list
 def set_difficulty_highscores(difficulty):
     global difficulty_scores
     global high_scores
@@ -40,14 +46,12 @@ def display_partial_highscores(difficulty):
         i += 1
         if i < 11:
             print("{}. {} -- {}".format(i, score[1],score[0]))
-    print("\n")
-            
+    print("\n")      
+  
 
-    
-
-
-# start_game gets the player's name, sets a new random number, and clears the guesses counter
+# start_game gets the player's name, sets a new random number, clears the guesses counter, and plays the game
 def start_game():
+    # allows access to these global variables
     global player_name
     global game_number
     global guesses
@@ -56,7 +60,7 @@ def start_game():
     global difficulty_scores
     
 
-    #reset values
+    # reset values
     player_name = None
     difficulty = None
     guesses = 0
@@ -88,7 +92,7 @@ def start_game():
             difficulty = int(difficulty)
             if difficulty < 1 or difficulty > 3:
                 raise ValueError
-            if difficulty == 1:
+            elif difficulty == 1:
                 difficulty_name = "Easy"
             elif difficulty == 2:
                 difficulty_name = "Medium"
@@ -155,39 +159,6 @@ def start_game():
                 print("\nYour guess was higher than the correct number")
         except ValueError:
             print("\nSorry, that is not a valid number, please try again.")
-
-        # if player_guess < starting_number or player_guess > ending_number:
-        #     print("That number does not fall within {} to {}".format(starting_number, ending_number))        
-        # elif player_guess == game_number:
-        #     print("\nYou win!")
-        #     print("It took you {} attempts.".format(guesses))
-        #     record_highscore(guesses, player_name)
-        #     play_again()
-        # elif player_guess < game_number:
-        #     print("\nYour guess was lower than the correct number")
-        # else:
-        #     print("\nYour guess was higher than the correct number")
-       
-    """Psuedo-code Hints
-    
-    When the program starts, we want to:
-    ------------------------------------
-    1. Display an intro/welcome message to the player.
-    2. Store a random number as the answer/solution.
-    3. Continuously prompt the player for a guess.
-      a. If the guess greater than the solution, display to the player "It's lower".
-      b. If the guess is less than the solution, display to the player "It's higher".
-    
-    4. Once the guess is correct, stop looping, inform the user they "Got it"
-         and show how many attempts it took them to get the correct number.
-    5. Let the player know the game is ending, or something that indicates the game is over.
-    
-    ( You can add more features/enhancements if you'd like to. )
-    """
-    # write your code inside this function.
-
-
-
 
 
 # Kick off the program by calling the start_game function.
