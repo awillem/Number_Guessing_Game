@@ -102,7 +102,7 @@ def start_game():
     #set random number based on difficulty
     starting_number = 1
     if difficulty == 1:        
-        ending_number = 4
+        ending_number = 10
     elif difficulty == 2:        
         ending_number = 25
     elif difficulty == 3:        
@@ -139,7 +139,11 @@ def start_game():
             if player_guess < starting_number or player_guess > ending_number:
                 print("That number does not fall within {} to {}".format(starting_number, ending_number))        
             elif player_guess == game_number:
-                print("\nYou win!")
+                print("""
+                ********
+                You win!
+                ********
+                """)
                 print("It took you {} attempts.".format(guesses))
                 record_highscore(guesses, player_name, difficulty)
                 play_again()
