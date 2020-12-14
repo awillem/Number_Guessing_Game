@@ -128,6 +128,8 @@ def start_game():
     elif len(difficulty_scores) > 9:
         print("Top 10 {} Highscores".format(difficulty_name))
         display_partial_highscores(difficulty)
+    elif len(difficulty_scores) == 0:
+        print("There are currently no {} scores.\n".format(difficulty_name))
 
     # Play Game
     while player_guess != game_number:
